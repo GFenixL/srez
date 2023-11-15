@@ -8,8 +8,10 @@ namespace Srez.Model
 {
     internal class Order
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
+        public int orderid { get; set; }
+        public int userid { get; set; }
+        public DateTime? ordersdate { get; set; }
         public ICollection<OrderService> Services { get; set; }
+        public User user { get; set; }
     }
 }

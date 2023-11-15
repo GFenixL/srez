@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Dmitrii\Desktop\Новая папка\Srez\Srez\obj\Debug\
+C:\Users\Dmitrii\Desktop\ServiceApp\Srez\Srez\obj\Debug\
 Srez
 none
 false
 DEBUG;TRACE
-C:\Users\Dmitrii\Desktop\Новая папка\Srez\Srez\App.xaml
+C:\Users\Dmitrii\Desktop\ServiceApp\Srez\Srez\App.xaml
 4-464359154
 
-11247585754
-121-982920741
+12568342072
+1301499457735
 Pages\AddOrderPage.xaml;Pages\LoginPage.xaml;Pages\ServicesListPage.xaml;_Windows\MainWindow.xaml;
 
-True
+False
 

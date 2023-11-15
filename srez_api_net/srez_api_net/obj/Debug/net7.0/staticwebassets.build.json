@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "WV/30Mq9Az5V8sz/V3gCBGqZvkSidRYvsRuRb3nBFAo=",
+  "Source": "srez_api_net",
+  "BasePath": "_content/srez_api_net",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "srez_api_net\\wwwroot",
+      "Source": "srez_api_net",
+      "ContentRoot": "C:\\Users\\Dmitrii\\Desktop\\ServiceApp\\srez_api_net\\srez_api_net\\wwwroot\\",
+      "BasePath": "_content/srez_api_net",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Dmitrii\\Desktop\\ServiceApp\\srez_api_net\\srez_api_net\\wwwroot\\index.html",
+      "SourceId": "srez_api_net",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dmitrii\\Desktop\\ServiceApp\\srez_api_net\\srez_api_net\\wwwroot\\",
+      "BasePath": "_content/srez_api_net",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<srez_api_net.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Все заказы:</h1>
+
+<p>
+    <a asp-controller="Orders" asp-action="Create">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordersdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Userfullname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ordersdate)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.User.Userfullname)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-controller="Orders" asp-route-id="@item.Orderid">Изменить</a> |
+                    <a asp-action="Details" asp-controller="Orders" asp-route-id="@item.Orderid">Детали</a> |
+                    <a asp-action="Delete" asp-controller="Orders" asp-route-id="@item.Orderid">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

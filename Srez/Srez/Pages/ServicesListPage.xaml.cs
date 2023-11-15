@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Web.Script.Serialization;
+using Srez.Classes;
+using System.Text.Json;
 
 namespace Srez.Pages
 {
@@ -27,6 +29,13 @@ namespace Srez.Pages
         public ServicesListPage()
         {
             InitializeComponent();
+        }
+
+        private void Load()
+        {
+            var json = HttpRequestHelper.HttpGet("https://localhost:7298/OrdersForApp", "");
+            List<Order> orderList = JsonSerializer.Deserialize<List<Order>>(json);
+            OrdersListView.ItemsSource = orderList;
         }
 
         private void AddMenuItem_Click(object sender, RoutedEventArgs e)
@@ -45,36 +54,41 @@ namespace Srez.Pages
             Order order = menu.DataContext as Order;
 
         }
-        public T CallWebAPi<T>(Uri url, out bool isSuccessStatusCode)
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            T result = default(T);
-
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = url;
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(
-                    System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", userName, password))));
-
-                HttpResponseMessage response = client.GetAsync(url).Result;
-                isSuccessStatusCode = response.IsSuccessStatusCode;
-                var javaScriptSerializer = new JavaScriptSerializer();
-                if (isSuccessStatusCode)
-                {
-                    var dataobj = response.Content.ReadAsStringAsync();
-                    result = javaScriptSerializer.Deserialize<T>(dataobj.Result);
-                }
-                else if (Convert.ToString(response.StatusCode) != "InternalServerError")
-                {
-                    result = javaScriptSerializer.Deserialize<T>("{ \"APIMessage\":\"" + response.ReasonPhrase + "\" }");
-                }
-                else
-                {
-                    result = javaScriptSerializer.Deserialize<T>("{ \"APIMessage\":\"InternalServerError\" }");
-                }
-            }
-            return result;
+            Load();
         }
+        //public T CallWebAPi<T>(Uri url, out bool isSuccessStatusCode)
+        //{
+        //    T result = default(T);
+
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = url;
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(
+        //            System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", Userlogin, Userpassword))));
+
+        //        HttpResponseMessage response = client.GetAsync(url).Result;
+        //        isSuccessStatusCode = response.IsSuccessStatusCode;
+        //        var javaScriptSerializer = new JavaScriptSerializer();
+        //        if (isSuccessStatusCode)
+        //        {
+        //            var dataobj = response.Content.ReadAsStringAsync();
+        //            result = javaScriptSerializer.Deserialize<T>(dataobj.Result);
+        //        }
+        //        else if (Convert.ToString(response.StatusCode) != "InternalServerError")
+        //        {
+        //            result = javaScriptSerializer.Deserialize<T>("{ \"APIMessage\":\"" + response.ReasonPhrase + "\" }");
+        //        }
+        //        else
+        //        {
+        //            result = javaScriptSerializer.Deserialize<T>("{ \"APIMessage\":\"InternalServerError\" }");
+        //        }
+        //    }
+        //    return result;
+        //}
     }
 }

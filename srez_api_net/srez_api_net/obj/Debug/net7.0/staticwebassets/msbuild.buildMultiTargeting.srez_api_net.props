@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\srez_api_net.props" />
+</Project>
